@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1524521352575.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "731272029",
+    "id" : "F0482FA6",
+    "lastKnownWriteTime" : 1524525570,
+    "last_content_update" : 1524525570,
+    "path" : "~/Documents/My_R/ShinyGapminder/ShinyGapminder/app.R",
+    "project_path" : "ShinyGapminder/app.R",
+    "properties" : {
+        "cursorPosition" : "16,2",
+        "scrollLine" : "13"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

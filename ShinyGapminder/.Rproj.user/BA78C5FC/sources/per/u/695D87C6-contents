@@ -1,0 +1,48 @@
+#
+# This is a Shiny web application. You can run the application by clicking
+# the 'Run App' button above.
+#
+# Find out more about building applications with Shiny here:
+#
+#    http://shiny.rstudio.com/
+#
+
+library(shiny)
+library(gapminder)
+library(dplyr)
+
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+  
+  headerPanel("Gapminder Data from 2000 to 2007"),
+  
+  sidebarPanel(selectInput("Vector", "Select Year", 
+                           c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007), selected = 2000, multiple = FALSE),
+               actionButton("go", "Go")),
+  
+  mainPanel(plotOutput("main_plot"))
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+  
+  gapminre_year <- gapminder %>% 
+    filter(year == input$Vector)
+
+  output$main_plot <- renderPlot( 
+    ggplot(gapminder_year, aes(x = gdpPercap, y = lifeExp, col = "red")) +
+      geom_point(alpha = 0.2, shape = 21, fill = "blue", colour="black", size = 5) +
+      geom_smooth(method = "lm", se = F, col = "maroon3") +
+      geom_smooth(method = "loess", se = F, col = "limegreen") 
+    labs (title= "Life Exp. vs. Population Size", 
+          x = "population", y = "Life Exp.") +
+      theme(legend.position = "none", 
+            panel.border = element_rect(fill = NA, 
+                                        colour = "black",
+                                        size = .75),
+            plot.title=element_text(hjust=0.5))))
+  
+}
+# Run the application 
+shinyApp(ui = ui, server = server)
